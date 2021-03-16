@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    public List<GameObject> enemies;
+    public List<GameObject> enemies; // 현 스테이지의 모든 Enemy
+
+    // 위,아래 벽
     [SerializeField] private GameObject bottomObj;
     [SerializeField] private GameObject topObj;
 
@@ -30,8 +32,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             Player.Instance.SetAttackSpeed(-0.1f);
     }
 
+    
     public void OnEnemyAppear(GameObject obj)
     {
+        // physics Layer로 Enemy만 충돌하도록 제한함
         enemies.Add(obj);
         Player.Instance.enemyies = enemies;
     }

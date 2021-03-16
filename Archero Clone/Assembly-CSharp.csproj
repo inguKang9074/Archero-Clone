@@ -66,19 +66,25 @@
     <Compile Include="Assets\Scripts\Bullet\BulletCollider.cs" />
     <Compile Include="Assets\Scripts\CameraScripts.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Character\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Character\Player\AttackEvent.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerColliderController.cs" />
+    <Compile Include="Assets\Scripts\Character\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Character\State\Player\PlayerAttackState.cs" />
     <Compile Include="Assets\Scripts\Character\State\Player\PlayerHitState.cs" />
     <Compile Include="Assets\Scripts\Character\State\Player\PlayerIdleState.cs" />
     <Compile Include="Assets\Scripts\Character\State\Player\PlayerRunState.cs" />
     <Compile Include="Assets\Scripts\Character\State\State.cs" />
     <Compile Include="Assets\Scripts\Character\State\StateMachine.cs" />
+    <Compile Include="Assets\Scripts\DamageMessage.cs" />
     <Compile Include="Assets\Scripts\Enum.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Gun\Gun.cs" />
+    <Compile Include="Assets\Scripts\IDamageable.cs" />
     <Compile Include="Assets\Scripts\Joystick\JoystickMove.cs" />
+    <Compile Include="Assets\Scripts\LivingEntity.cs" />
     <Compile Include="Assets\Scripts\Misc\SingletonMonoBehaviour.cs" />
     <Compile Include="Assets\Scripts\StageCheck.cs" />
     <Compile Include="Assets\SimpleEnviroment\Scripts\BasicAnimator.cs" />
@@ -615,31 +621,31 @@
       <HintPath>D:/Unity/2019.4.18f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/Unity/Archero Clone/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/git/Archero-Clone/Archero Clone/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/Unity/Archero Clone/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/git/Archero-Clone/Archero Clone/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Unity/Archero Clone/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/git/Archero-Clone/Archero Clone/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Unity/Archero Clone/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/git/Archero-Clone/Archero Clone/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/Unity/Archero Clone/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/git/Archero-Clone/Archero Clone/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Unity/Archero Clone/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/git/Archero-Clone/Archero Clone/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/Unity/Archero Clone/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/git/Archero-Clone/Archero Clone/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Unity/Archero Clone/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/git/Archero-Clone/Archero Clone/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Unity/Archero Clone/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/git/Archero-Clone/Archero Clone/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

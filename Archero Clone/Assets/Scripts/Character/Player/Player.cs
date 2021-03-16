@@ -20,8 +20,10 @@ public class Player : SingletonMonoBehaviour<Player>
     public Rigidbody rb;
     public JoystickMove joystickMove;
     public PlayerAnimation playerAnimation;
+    public Gun currentGun;
 
-    public List<GameObject> enemyies;
+    public List<GameObject> enemyies; // 스테이지내 모든 적들
+    public GameObject target; // 가장 가까운 적
 
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform spawnPoint;
@@ -30,7 +32,7 @@ public class Player : SingletonMonoBehaviour<Player>
     [SerializeField] private float attackSpeed;
 
     private float recoverTime = 0f;
-    public GameObject enemy;
+
 
     protected override void Awake()
     {
@@ -39,6 +41,7 @@ public class Player : SingletonMonoBehaviour<Player>
         joystickMove = GameObject.Find("JoyStick").GetComponent<JoystickMove>();
         playerAnimation = GetComponent<PlayerAnimation>();
         Speed = 5f;
+        currentGun = GetComponentInChildren<Gun>();
     }
 
     private void Start()
@@ -63,6 +66,14 @@ public class Player : SingletonMonoBehaviour<Player>
     void Update()
     {
         // 조이스틱 입력
+        InputHandle();
+
+        playerStateMachine.DoOperateUpdate();
+        playerAnimation.SetAttackSpeed(attackSpeed);
+    }
+
+    private void InputHandle()
+    {
         if (joystickMove.touchState == JoystickMove.TouchState.DOWN)
         {
             playerStateMachine.SetState(dicState[PlayerState.IDLE], this);
@@ -85,16 +96,12 @@ public class Player : SingletonMonoBehaviour<Player>
         }
         else if (joystickMove.touchState == JoystickMove.TouchState.UP)
         {
-            //todo: 공격 처리 해야함
-            enemy = RaycastEnemy();
-            if (enemy != null)
+            target = RaycastEnemy();
+            if (target != null)
                 playerStateMachine.SetState(dicState[PlayerState.ATTACK], this);
             else
                 playerStateMachine.SetState(dicState[PlayerState.IDLE], this);
         }
-
-        playerStateMachine.DoOperateUpdate();
-        playerAnimation.SetAttackSpeed(attackSpeed);
     }
 
     private void HitEvent(float recoverTime)
@@ -134,17 +141,18 @@ public class Player : SingletonMonoBehaviour<Player>
             this.attackSpeed += attackSpeed;
     }
 
+    // 가장 가까운 적을 반환함
     public GameObject RaycastEnemy()
     {
         RaycastHit hit;
         int shortesIndex = -1;
-        float shortesDistance = Mathf.Infinity;
+        float shortesDistance = Mathf.Infinity; // player와 가장 가까운 enemy 거리
         LayerMask layerMask = 1 << LayerMask.NameToLayer("Enemy");
 
         for (int i = 0; i < enemyies.Count; i++)
         {
             bool ishit = Physics.Raycast(transform.position, enemyies[i].transform.position - transform.position, 
-                out hit, 50f, layerMask);
+                out hit, currentGun.fireDistance);
 
             if (ishit && hit.transform.tag == "Enemy")
             {
@@ -154,10 +162,8 @@ public class Player : SingletonMonoBehaviour<Player>
                     shortesDistance = distance;
                     shortesIndex = i;
                 }
-                // return enemyies[i];
             }
         }
-
         if (shortesIndex == -1)
             return null;
         else
@@ -169,7 +175,7 @@ public class Player : SingletonMonoBehaviour<Player>
         RaycastHit hit;
         LayerMask layerMask = 1 << LayerMask.NameToLayer("Enemy");
         Vector3 addPos = new Vector3(0,0.2f,0);
-        bool ishit = Physics.Raycast(transform.position, transform.forward + addPos, out hit, 50f, layerMask);
+        bool ishit = Physics.Raycast(transform.position, transform.forward + addPos, out hit, 20f, layerMask);
 
         if (ishit && hit.transform.tag == "Enemy")
         {
@@ -178,11 +184,12 @@ public class Player : SingletonMonoBehaviour<Player>
         }
         else
             Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position + addPos, transform.forward * 50f);
+
+        Gizmos.DrawRay(transform.position + addPos, transform.forward * 20f);
     }
 
     public GameObject GetTarget()
     {
-        return enemy;
+        return target;
     }
 }

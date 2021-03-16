@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 3369448910127925844}
   - component: {fileID: 3379506068505393148}
   - component: {fileID: 3451839385732286760}
+  - component: {fileID: -683338554096905186}
   m_Layer: 0
   m_Name: MusketRifle
   m_TagString: Untagged
@@ -130,3 +131,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-683338554096905186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364694025176501996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 568a87584232ec14dabd435d7e32e341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireDistance: 20
+  damage: 10
+  timeBetFire: 0.12
+  shotClip: {fileID: 0}
+  reloadClip: {fileID: 0}
+  bullet: {fileID: -6455258503675424304, guid: dadab547128527044aaac8d19f6aaaae, type: 3}
+  fireTransform: {fileID: 2844341676602518249}

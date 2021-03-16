@@ -22,7 +22,7 @@ TagManager:
   - EnemyCollider
   - Bullet
   - BulletCollider
-  - 
+  - StageCheck
   - 
   - 
   - 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerAttackState : State<Player>
 {
@@ -20,12 +21,15 @@ public class PlayerAttackState : State<Player>
     public override void Update()
     {
         Debug.Log("AttackUpdate");
-        GameObject targer = character.GetTarget();
-
-        character.transform.rotation = Quaternion.LookRotation(
-            targer.transform.position - character.transform.position, 
-            Vector3.up);
         rb.velocity = Vector3.zero;
+
+        GameObject targer = character.GetTarget();
+        if (targer != null)
+        {
+            character.transform.rotation = Quaternion.LookRotation(
+                targer.transform.position - character.transform.position,
+                Vector3.up);
+        }
     }
 
     public override void OnExit()
